@@ -1,8 +1,12 @@
 import random, math,pylab
+import matplotlib.pyplot as plt
 import numpy as np
 
+def psi_0(x):
+    return 1/math.pi**(1/4)*math.exp(-x**2/2)
+
 def psi_0_sq(x):
-    return (1/ math.pi**(1.0/2))*math.exp( - x**2 )
+    return psi_0(x)**2
 
 locations=[]
 x = 0.0
@@ -16,7 +20,7 @@ for k in range(100000):
 
 
 
-pylab.hist(locations,normed=True,label='Histogram')
+pylab.hist(locations,density=True,label='Histogram')
 pylab.plot(np.arange(-10,10,.1),np.exp(-np.arange(-10,10,.1)**2)/(math.pi**(1/2.0)),label='Analytical')
 pylab.xlabel('x')
 pylab.ylabel('Probability')

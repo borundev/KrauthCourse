@@ -35,7 +35,7 @@ for i in range(poweroftwo):
     errors.append(math.sqrt(mean_sq / N - (mean / N) ** 2) / math.sqrt(N))
     bunches.append(i)
     data = new_data[:]
-    print mean / float(N), 'mean value, estimate of pi'
+    print(mean / float(N), 'mean value, estimate of pi')
 pylab.plot(bunches, errors, 'o')
 pylab.xlabel('iteration')
 pylab.ylabel('apparent error')
@@ -44,4 +44,4 @@ pylab.savefig('apparent_error_bunching.png')
 pylab.show()
 
 # added by BDC
-print math.fabs(mean/float(N)-math.pi)
+print(math.fabs(mean/float(N)-math.pi))

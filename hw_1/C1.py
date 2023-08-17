@@ -10,5 +10,5 @@ for iter in range(n_trials):
         n_hits += 1
         Obs = 4.0
     var += (Obs - math.pi)**2
-print 4.0 * n_hits / float(n_trials), math.sqrt(var / n_trials)
+print(4.0 * n_hits / float(n_trials), math.sqrt(var / n_trials))
 

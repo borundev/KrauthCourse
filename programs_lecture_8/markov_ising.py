@@ -1,15 +1,10 @@
 import random, math
-import numpy as np
 
 L = 16
 N = L * L
 nbr = {i : ((i // L) * L + (i + 1) % L, (i + L) % N,
             (i // L) * L + (i - 1) % L, (i - L) % N) \
                                     for i in range(N)}
-
-#for i in range(N):
-#    print i, nbr[i]
-
 nsteps = 1000000
 T = 2.0
 beta = 1.0 / T
@@ -20,7 +15,3 @@ for step in range(nsteps):
     if random.uniform(0.0, 1.0) < math.exp(-beta * delta_E):
         S[k] *= -1
 print S, sum(S)
-
-S_np=np.array(S)
-S_np.shape=[L,L]
-print S_np

@@ -5,7 +5,7 @@ def fourier_x_to_p(phi_x, dx):
     return numpy.array(phi_p)
 
 def fourier_p_to_x(phi_p, dp):
-    phi_x = [(phi_p * numpy.exp(1j * x * grid_p)).sum() for x in grid_x]
+    phi_x = [(phi_p * numpy.exp(1j * x * grid_p)).sum() * dp for x in grid_x]
     return numpy.array(phi_x) /  (2.0 * numpy.pi)
 
 def time_step_evolution(psi0, potential, grid_x, grid_p, dx, dp, delta_t):
@@ -14,7 +14,6 @@ def time_step_evolution(psi0, potential, grid_x, grid_p, dx, dp, delta_t):
     psi0 = numpy.exp(-1j * grid_p ** 2 * delta_t / 2.0) * psi0
     psi0 = fourier_p_to_x(psi0, dp)
     psi0 = numpy.exp(-1j * potential * delta_t / 2.0) * psi0
-    psi0 /= (numpy.absolute(psi0 ** 2).sum() * dx)
     return psi0
 
 def funct_potential(x):
@@ -58,7 +57,7 @@ psi /= numpy.sqrt( sigma * numpy.sqrt( numpy.pi ) )
 time = 0.0
 timestep = 0
 while time < t_max:
-    if timestep % 4 == 0:
+    if timestep % 5 == 0:
         show(grid_x, numpy.absolute(psi) ** 2.0, potential, time, timestep)
     print time
     time += delta_t
